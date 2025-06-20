@@ -5,7 +5,7 @@ import Navbar from '../../layouts/Navbar';
 import HeroSection from './sections/HeroSection';
 import AboutUsSection from './sections/AboutUsSection';
 import FAQSection from './sections/FAQSection'; 
-// import ContactSection from './sections/ContactSection';
+import ContactSection from './sections/ContactSection';
 import RegisterModal from '../../components/modals/RegisterModal';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -24,7 +24,7 @@ const LandingPage = () => {
         <HeroSection />
         <AboutUsSection />
         <FAQSection /> 
-        {/* <ContactSection /> */}
+        <ContactSection />
       </main>
 
       {/* <Footer /> */}

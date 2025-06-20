@@ -73,10 +73,8 @@ const AboutUsSection = () => {
               >
                 <commitment.icon className="w-8 h-8 sm:w-10 sm:h-10 mb-2 transition-transform duration-300 group-hover:-translate-y-1" />
                 
-                {/* LÍNEA MODIFICADA: Se ajusta el tamaño de fuente y se añade 'break-words' */}
                 <h4 className="font-bold text-sm sm:text-base break-words">{commitment.title}</h4>
                 
-                {/* LÍNEA MODIFICADA: Se añade 'break-words' para seguridad */}
                 <p className="hidden sm:block text-xs sm:text-sm mt-1 opacity-90 break-words">
                   {commitment.description}
                 </p>

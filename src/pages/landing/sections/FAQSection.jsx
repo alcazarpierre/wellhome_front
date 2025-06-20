@@ -1,13 +1,11 @@
 // src/pages/landing/sections/FAQSection.jsx
 import React, { useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'; // Iconos para desplegar/ocultar
+import faqImg from '../../../assets/img/whlp03.png'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'; 
 
 const faqs = [
   // ... (tus preguntas y respuestas)
-  {
-    question: `✅ ¿Qué es una "Unidad" en Wellhome?`,
-    answer: `Una "unidad" en Wellhome se refiere a cualquier bien o propiedad legalmente independizado dentro de un conjunto. Puede ser una vivienda en un condominio, un local comercial en un centro de comercio, o cualquier otro bien inmueble con propietario único. Facilitamos la gestión de cada una de ellas.`,
-  },
+
   {
     question: `✅ ¿Cualquier persona puede registrarse en Wellhome?`,
     answer: `El registro en Wellhome está vinculado a Conjuntos de Unidades (Condominios, Edificios, etc.) previamente configurados. Las credenciales de acceso se asocian a una propiedad específica dentro de estos. Si tu comunidad ya usa Wellhome, contacta al administrador de tu condominio para solicitar tus accesos. ¡Estamos listos para recibirte!`,
@@ -17,12 +15,8 @@ const faqs = [
     answer: `Para registrar tu condominio, necesitas tener las facultades legales como representante del mismo. Puedes iniciar el proceso fácilmente llenando el formulario en nuestra sección de "Registro", o si prefieres una guía personalizada, no dudes en ponerte en contacto con nuestro equipo. Te acompañaremos en cada paso.`,
   },
   {
-    question: `✅ ¿Puedo solicitar una demostración de Wellhome antes de implementarlo?`,
-    answer: `¡Absolutamente! Te invitamos a solicitar tus credenciales para acceder a una Demo interactiva de la App. Podrás explorar todas sus funcionalidades a tu ritmo. Una vez que estés convencido, pasaremos a la etapa de "Prueba en Producción" para que experimentes los beneficios de Wellhome en tu propio entorno.`,
-  },
-  {
     question: `✅ ¿Qué es la "Prueba en Producción" de Wellhome?`,
-    answer: `La "Prueba en Producción" es nuestro compromiso con tu tranquilidad y funcionalidad. Te ofrecemos 4 meses de servicio completamente sin costo, durante los cuales te brindaremos acompañamiento total en la configuración, implementación y capacitación. Queremos que te enamores de Wellhome y veas su valor real sin presiones.`,
+    answer: `La "Prueba en Producción" es nuestro compromiso con tu tranquilidad y funcionalidad. Te ofrecemos 6 meses de servicio completamente sin costo, durante los cuales te brindaremos acompañamiento total en la configuración, implementación y capacitación. Queremos que te enamores de Wellhome y veas su valor real sin presiones.`,
   },
   {
     question: `✅ ¿Necesito capacitación exhaustiva para usar la App?`,
@@ -46,11 +40,10 @@ const FAQSection = () => {
   };
 
   return (
-    // LÍNEA MODIFICADA: Fondo de la sección se adapta a los colores de contenido
+    
     <section id="faq" className="py-16 md:py-24 bg-content-bg-light dark:bg-content-bg-dark text-content-text-light dark:text-content-text-dark"> 
       <div className="container mx-auto px-4 max-w-screen-xl">
-        {/* LÍNEA MODIFICADA: Colores de título */}
-        <h2 className="text-3xl xs:text-4xl md:text-5xl font-extrabold text-center mb-12 text-brand-primary dark:text-brand-accent"> 
+        <h2 className="text-3xl xs:text-4xl md:text-5xl font-extrabold text-center mb-12 text-brand-primary dark:text-content-text-dark"> 
           ¿Tienes Preguntas? Tenemos las Respuestas.
         </h2>
 
@@ -59,9 +52,9 @@ const FAQSection = () => {
           {/* Imagen ilustrativa */}
           <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
             <img
-              src="https://placehold.co/800x400/5E2BFF/34D399?text=FAQ+Resueltas" // LÍNEA MODIFICADA: Colores de placeholder
+              src={faqImg} 
               alt="Preguntas frecuentes resueltas"
-              className="rounded-lg shadow-xl w-full h-auto max-w-md md:max-w-full"
+              className="rounded-xl shadow-xl w-full h-auto max-w-md md:max-w-full"
             />
           </div>
 
