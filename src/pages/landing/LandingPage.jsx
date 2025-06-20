@@ -1,7 +1,7 @@
 // src/pages/landing/LandingPage.jsx
 import React, { useState } from 'react';
 import Navbar from '../../layouts/Navbar';
-// import Footer from '../../layouts/Footer';
+import Footer from '../../layouts/Footer';
 import HeroSection from './sections/HeroSection';
 import AboutUsSection from './sections/AboutUsSection';
 import FAQSection from './sections/FAQSection'; 
@@ -27,7 +27,7 @@ const LandingPage = () => {
         <ContactSection />
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
 
       <RegisterModal isOpen={isRegisterModalOpen} onClose={handleCloseRegisterModal} />
     </div>
