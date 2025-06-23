@@ -13,7 +13,6 @@ export const contactSchema = z.object({
     errorMap: () => ({ message: "Por favor, selecciona un asunto." }),
   }),
   
-  // --- LÍNEA AÑADIDA ---
   mensaje: z.string()
              .min(10, { message: "Tu mensaje debe tener al menos 10 caracteres." })
              .max(500, { message: "El mensaje no puede exceder los 500 caracteres." }),
@@ -21,4 +20,11 @@ export const contactSchema = z.object({
   aceptaContacto: z.boolean().refine(data => data === true, {
     message: "Debes aceptar esta condición para poder enviar el formulario.",
   }),
+});
+
+
+export const loginSchema = z.object({
+  email: z.string().email({ message: "Por favor, introduce un correo electrónico válido." }),
+  password: z.string().min(1, { message: "La contraseña no puede estar vacía." }),
+  rememberMe: z.boolean().optional(),
 });

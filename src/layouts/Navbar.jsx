@@ -6,7 +6,7 @@ import fullLogo from '../assets/logos/fullLogo.svg';
 import shortLogo from '../assets/logos/shortLogo.svg';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Navbar = ({ onOpenRegisterModal }) => { 
+const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => { 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { darkMode, toggleDarkMode } = useTheme();
@@ -34,22 +34,15 @@ const Navbar = ({ onOpenRegisterModal }) => {
     };
   }, [isMenuOpen, isMobile]);
 
-  const handleLoginClick = () => {
-    closeMenu();
-    navigate('/login');
-  };
-
   const menuItems = [
     { label: 'Inicio', href: '#inicio', isAction: false },
     { label: 'Nosotros', href: '#nosotros', isAction: false },
     { label: 'Preguntas', href: '#faq', isAction: false },
-    // { label: 'Contacto', href: '#contacto', isAction: false },
     { label: 'Registro', action: onOpenRegisterModal, isAction: true, type: 'border-button' }, 
-    { label: 'Ingresar', action: handleLoginClick, isAction: true, type: 'filled-button' },
+    { label: 'Ingresar', action: onOpenLoginModal, isAction: true, type: 'filled-button' },
   ];
 
   return (
-    // LÍNEA MODIFICADA: Usar navbar-bg-light y navbar-bg-dark para el fondo de la Navbar
     <nav className="fixed top-0 left-0 w-full bg-navbar-bg-light dark:bg-navbar-bg-dark shadow-md z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center max-w-screen-xl">
         {/* Logo */}
@@ -69,7 +62,6 @@ const Navbar = ({ onOpenRegisterModal }) => {
           <button
             type="button"
             onClick={toggleDarkMode}
-            // LÍNEA MODIFICADA: Colores de fondo del toggle
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition" 
           >
             <SunIcon className="h-5 w-5 text-yellow-500 dark:hidden" />
@@ -82,7 +74,8 @@ const Navbar = ({ onOpenRegisterModal }) => {
               <React.Fragment key={item.label}>
                 {item.isAction ? (
                   <button
-                    onClick={() => { item.action(); closeMenu(); }} 
+                    // --- LÍNEA CORREGIDA --- Se añade optional chaining '?.'
+                    onClick={() => { item.action?.(); closeMenu(); }} 
                     className={`text-base font-medium py-2 px-4 rounded-full transition-all duration-300
                       ${item.type === 'border-button'
                         ? 'border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white dark:border-white dark:text-white'
@@ -118,7 +111,7 @@ const Navbar = ({ onOpenRegisterModal }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}        
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-40 flex items-start justify-center pt-20">
           <div className="w-[300px] bg-content-bg-light dark:bg-content-bg-dark rounded-lg shadow-lg p-4 relative animate-fade-in flex flex-col items-center"> 
@@ -133,7 +126,8 @@ const Navbar = ({ onOpenRegisterModal }) => {
                 <React.Fragment key={item.label}>
                   {item.isAction ? (
                     <button
-                      onClick={() => { item.action(); closeMenu(); }}
+                      // --- LÍNEA CORREGIDA --- Se añade optional chaining '?.'
+                      onClick={() => { item.action?.(); closeMenu(); }}
                       className={`text-lg font-medium py-2 px-4 rounded-full w-full text-center transition-all duration-300
                         ${item.type === 'border-button'
                           ? 'border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white dark:border-white dark:text-white'
