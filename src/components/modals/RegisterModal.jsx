@@ -1,7 +1,9 @@
 // src/components/modals/RegisterModal.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import shortLogo from '../../assets/logos/shortLogo.svg';
+import fullLogo from '../../assets/logos/fullLogo.svg';
+import condo from '../../assets/icons/whCondo.png'
+import resident from '../../assets/icons/whResident.png'
 import { XMarkIcon as XIcon } from '@heroicons/react/24/outline';
 
 const RegisterModal = ({ isOpen, onClose }) => {
@@ -32,7 +34,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
         <div className="flex flex-col items-center text-center">
           {/* Contenedor con fondo claro inmutable */}
           <div className="p-2 rounded bg-content-bg-light dark:bg-content-bg-light mb-4"> 
-            <img src={shortLogo} alt='Wellhome Short Logo' className="h-16 w-auto" />
+            <img src={fullLogo} alt='Wellhome Short Logo' className="h-16 w-auto" />
           </div>
           {/* LÍNEA MODIFICADA: Color del texto del párrafo */}
           <p className="text-lg font-semibold mb-6 text-content-text-light dark:text-content-text-dark"> 
@@ -45,18 +47,14 @@ const RegisterModal = ({ isOpen, onClose }) => {
               onClick={handleResidentClick}
               className="flex items-center justify-center px-4 py-3 border border-brand-primary text-brand-primary rounded-lg hover:bg-brand-primary hover:text-white transition-colors duration-300 font-medium"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
+              <img src={resident} alt="Incono de Residente" className="h-10 px-4 w-auto"/>
               Soy Residente
             </button>
             <button
               onClick={handleCondominiumClick}
               className="flex items-center justify-center px-4 py-3 border border-brand-primary text-brand-primary rounded-lg hover:bg-brand-primary hover:text-white transition-colors duration-300 font-medium"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 0 00-2 2v16m4 0h6m-6 0h-2m2 0h2m-2 0V5m0 16v-2m0-4h2m0-4h-2m2 0V5m0 16v-2m0-4h2m0-4h-2m2 0V5m0 16v-2m0-4h2m0-4h-2m2 0V5m0 16v-2m0-4h2" />
-              </svg>
+              <img src={condo} alt="Icono de Condominio" className="h-10 px-4 w-auto"/>
               Registrar Condominio
             </button>
           </div>
