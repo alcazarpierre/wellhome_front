@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landing/LandingPage';
-// import LoginPage from './pages/auth/LoginPage';
+import DevelopmentTeamPage from './pages/DevelopmentTeamPage';
 // import NotFoundPage from './pages/NotFoundPage';
 import { ThemeContextProvider } from './contexts/ThemeContext';
 
@@ -12,8 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          <Route path="/equipo-desarrollo" element={<div>Página del Equipo de Desarrollo (futuro)</div>} />
+          <Route path="/equipo-desarrollo" element={<DevelopmentTeamPage />} />
           {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </Router>
