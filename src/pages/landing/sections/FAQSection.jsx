@@ -4,7 +4,6 @@ import faqImg from '../../../assets/img/whlp03.png'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'; 
 
 const faqs = [
-  // ... (tus preguntas y respuestas)
 
   {
     question: `✅ ¿Cualquier persona puede registrarse en Wellhome?`,
@@ -47,9 +46,7 @@ const FAQSection = () => {
           ¿Tienes Preguntas? Tenemos las Respuestas.
         </h2>
 
-        {/* Contenedor de la imagen y los acordeones */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-          {/* Imagen ilustrativa */}
           <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
             <img
               src={faqImg} 
@@ -58,13 +55,10 @@ const FAQSection = () => {
             />
           </div>
 
-          {/* Acordeones de Preguntas Frecuentes */}
           <div className="md:w-1/2 w-full">
             {faqs.map((faq, index) => (
-              // LÍNEA MODIFICADA: Fondo del item de FAQ se adapta
               <div key={index} className="mb-4 bg-content-bg-light dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <button
-                  // LÍNEA MODIFICADA: Colores del texto del botón de pregunta se adaptan
                   className="flex justify-between items-center w-full px-6 py-4 text-left font-semibold text-lg md:text-xl focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-700 transition-colors duration-200 text-content-text-light dark:text-content-text-dark" 
                   onClick={() => toggleFAQ(index)}
                 >
@@ -76,7 +70,6 @@ const FAQSection = () => {
                   )}
                 </button>
                 {activeIndex === index && (
-                  // LÍNEA MODIFICADA: Colores del texto de la respuesta se adaptan
                   <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 text-base md:text-lg leading-relaxed text-content-text-light dark:text-content-text-dark"> 
                     {faq.answer}
                   </div>

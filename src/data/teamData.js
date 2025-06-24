@@ -1,20 +1,17 @@
 // src/data/teamData.js
 
-// 1. Importa las imágenes de los desarrolladores
 import Pierre from '../assets/team/pierre.png';
 import Luca from '../assets/team/luca.png';
 import Pablo from '../assets/team/pablo.png';
 import Franco from '../assets/team/franco.png';
 import Alejandro from '../assets/team/alejandro.png';
 
-// 2. Define el array de desarrolladores
-// Nota: Para los colores, usamos directamente las clases de Tailwind CSS. Es un patrón muy potente.
 export const devs = [
   {
     id: 1,
     nombre: "Pierre Alcázar",
     imagen: Pierre,
-    color: "bg-green-400", // verde
+    color: "bg-green-400", 
     rol1: "Project Manager",
     rol2: "FullStack Developer",
     pais: "Peru",
@@ -25,7 +22,7 @@ export const devs = [
     id: 2,
     nombre: "Luca Bruzzone",
     imagen: Luca,
-    color: "bg-purple-300", // púrpura
+    color: "bg-purple-300", 
     rol1: "Colaborador",
     rol2: "FullStack Developer",
     pais: "Chile",
@@ -36,7 +33,7 @@ export const devs = [
     id: 3,
     nombre: "Pablo Figueroa",
     imagen: Pablo,
-    color: "bg-yellow-400", // Amarillo
+    color: "bg-yellow-400", 
     rol1: "Colaborador",
     rol2: "Front-End Developer",
     pais: "Argentina",
@@ -47,18 +44,18 @@ export const devs = [
     id: 4,
     nombre: "Franco Famulari",
     imagen: Franco,
-    color: "bg-blue-300", // Celeste
+    color: "bg-blue-300", 
     rol1: "Colaborador",
     rol2: "Front-End Developer",
     pais: "Argentina",
-    github: "https://github.com/FrancoFamulari", // Corregido para el ejemplo
+    github: "https://github.com/FrancoFamulari", 
     linkedin: "https://www.linkedin.com/in/franco-famulari-25b2b9127/",
   },
   {
     id: 5,
     nombre: "Alejandro Becerra",
     imagen: Alejandro,
-    color: "bg-red-400", // rojo
+    color: "bg-red-400", 
     rol1: "Colaborador",
     rol2: "Back-End Developer",
     pais: "Colombia",

@@ -22,7 +22,7 @@ const ScrollToTop = () => {
           // Si encontramos el elemento, hacemos un scroll suave hacia él.
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100); // Un delay de 100ms suele ser suficiente.
+      }, 100); // Un delay de 100ms
 
     } else {
       // Si no hay hash, simplemente hacemos scroll a la parte superior.

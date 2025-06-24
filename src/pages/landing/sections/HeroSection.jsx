@@ -105,7 +105,6 @@ const HeroSection = () => {
           Regístrate Gratis
         </button>
 
-        {/* Contenedor de Funcionalidades Clave */}
         <div className="mt-12 md:mt-16 bg-content-bg-light dark:bg-content-bg-dark bg-opacity-90 dark:bg-opacity-80 backdrop-blur-sm p-6 rounded-lg shadow-xl inline-block w-full relative">
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-brand-primary dark:text-brand-accent">Funcionalidades Clave</h3>
 

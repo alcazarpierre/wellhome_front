@@ -4,7 +4,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import shortLogo from '../assets/logos/shortLogo.svg';
 
-// --- LÍNEA MODIFICADA: Array de enlaces actualizado ---
 const navLinks = [
   { name: 'Nosotros', href: '#nosotros' },
   { name: 'Preguntas Frecuentes', href: '#faq' },
@@ -34,11 +33,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-400">
       <div className="container mx-auto px-4 py-12 max-w-screen-xl">
-        
-        {/* --- SECCIÓN PRINCIPAL REESTRUCTURADA --- */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-8 md:space-y-0">
-          
-          {/* Columna 1: Marca e Información de Contacto */}
           <div className="flex flex-col items-center md:items-start">
             <Link to="/">
               <img
@@ -58,8 +53,6 @@ const Footer = () => {
                 </a>
             </div>
           </div>
-
-          {/* Columna 2: Navegación */}
           <div className="w-full md:w-auto">
             <h3 className="font-bold text-white uppercase tracking-wider mb-4">Navegación</h3>
             <nav className="flex flex-col space-y-2">
@@ -70,8 +63,6 @@ const Footer = () => {
               ))}
             </nav>
           </div>
-
-          {/* Columna 3: Redes Sociales */}
           <div className="w-full md:w-auto">
             <h3 className="font-bold text-white uppercase tracking-wider mb-4">Síguenos</h3>
             <div className="flex justify-center md:justify-start space-x-6">
@@ -84,8 +75,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* Separador y Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-700 text-center">
           <p className="text-sm">
             &copy; {currentYear} WellHome. Todos los derechos reservados.

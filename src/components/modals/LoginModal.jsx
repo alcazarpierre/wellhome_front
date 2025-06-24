@@ -23,7 +23,7 @@ const LoginModal = ({ isOpen, onClose }) => {
       className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center z-50"
       onClick={onClose} // Cierra el modal al hacer clic fuera
     >
-      {/* --- LÍNEA MODIFICADA: Se añade 'relative' para posicionar el botón de cierre --- */}
+      {/* --- Se añade 'relative' para posicionar el botón de cierre --- */}
       <div 
         className="relative bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl w-full max-w-md"
         onClick={e => e.stopPropagation()} // Evita que el clic dentro del modal lo cierre

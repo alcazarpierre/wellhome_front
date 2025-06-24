@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr'; // Mantén este si lo usas para importar SVGs como componentes
 
-// LÍNEA ELIMINADA: import tailwindcss from '@tailwindcss/vite'; // Esta línea debe desaparecer
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,7 +24,7 @@ export default defineConfig({
         theme_color: '#2563EB',
         background_color: '#FFFFFF',
         display: 'standalone',
-        start_url: '/login',
+        start_url: '/',
         scope: '/',
         icons: [
           {

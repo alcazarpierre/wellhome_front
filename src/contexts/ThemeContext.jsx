@@ -1,10 +1,7 @@
 // src/contexts/ThemeContext.jsx
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-// 1. Crear el Contexto
 export const ThemeContext = createContext();
-
-// 2. Crear el Proveedor del Contexto
 export const ThemeContextProvider = ({ children }) => {
   // Estado para el modo oscuro
   const [darkMode, setDarkMode] = useState(() => {

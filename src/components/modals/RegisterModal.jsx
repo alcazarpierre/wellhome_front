@@ -36,7 +36,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
           <div className="p-2 rounded bg-content-bg-light dark:bg-content-bg-light mb-4"> 
             <img src={fullLogo} alt='Wellhome Short Logo' className="h-16 w-auto" />
           </div>
-          {/* LÍNEA MODIFICADA: Color del texto del párrafo */}
+          {/* Color del texto del párrafo */}
           <p className="text-lg font-semibold mb-6 text-content-text-light dark:text-content-text-dark"> 
             Crea tu cuenta como residente o registra tu Condominio para configurar la app.
           </p>

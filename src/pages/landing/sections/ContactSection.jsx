@@ -71,8 +71,6 @@ const ContactSection = () => {
     // alert('Formulario enviado con éxito (simulación)');
   };
 
-  // --- COMPONENTE FormField MODIFICADO ---
-  // Ahora es capaz de renderizar inputs, selects y textareas
   const FormField = ({ name, label, type = 'text', placeholder, children }) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-lg font-medium mb-2 text-content-text-light dark:text-content-text-dark">{label}</label>
@@ -123,8 +121,6 @@ const ContactSection = () => {
               </FormField>
             </div>
             
-            {/* --- CAMPO DE MENSAJE AÑADIDO --- */}
-            {/* Ocupa el ancho completo de la grilla */}
             <div className="md:col-span-2">
               <FormField name="mensaje" label="Mensaje" type="textarea" placeholder="Escribe tu consulta aquí..." />
             </div>

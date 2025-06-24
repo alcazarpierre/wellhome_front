@@ -9,7 +9,7 @@ import Footer from '../layouts/Footer'; // Opcional, si quieres el footer aquí
 const DevelopmentTeamPage = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-900 min-h-screen">
-      <Navbar /> {/* Opcional */}
+      <Navbar /> 
       <main className="py-24 px-4">
         <div className="container mx-auto max-w-screen-xl">
           <div className="text-center mb-16">
@@ -22,17 +22,16 @@ const DevelopmentTeamPage = () => {
           {/* Grilla de tarjetas de desarrolladores */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {devs.map(dev => (
-              // --- LÍNEA MODIFICADA: Pasamos la nueva prop 'isInitiallyActive' ---
               <DevCard 
                 key={dev.id} 
                 dev={dev} 
-                isInitiallyActive={dev.id === 1} // Será 'true' solo para Pierre, 'false' para los demás
+                isInitiallyActive={dev.id === 1} 
               />
             ))}
           </div>
         </div>
       </main>
-      <Footer /> {/* Opcional */}
+      <Footer /> 
     </div>
   );
 };

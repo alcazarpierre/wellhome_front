@@ -3,8 +3,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// He seleccionado una ilustración SVG limpia y la he convertido en un componente de React.
-// Esto evita tener que cargar un archivo de imagen adicional.
 const NotFoundIllustration = (props) => (
   <svg viewBox="0 0 768 512" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path d="M164 336H24V144h140v192zM124 304V176H56v128h68z" fill="#D6D6D6"/>

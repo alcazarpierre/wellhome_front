@@ -16,13 +16,11 @@ function App() {
         position="top-center" 
         reverseOrder={false}
         toastOptions={{
-          // Estilos para un look más consistente con tu app
           className: '',
           style: {
             background: '#333',
             color: '#fff',
           },
-          // Estilos para las notificaciones de éxito
           success: {
             duration: 3000,
             theme: {
@@ -43,4 +41,4 @@ function App() {
   );
 }
 
-export default App; // LÍNEA MODIFICADA: Asegura que se exporte como default
+export default App;

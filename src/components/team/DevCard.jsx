@@ -1,7 +1,7 @@
 // src/components/team/DevCard.jsx
 
 import React, { useState } from 'react';
-import CountryFlag from './CountryFlag'; // Un componente auxiliar que crearemos a continuación
+import CountryFlag from './CountryFlag';
 
 // Íconos para redes sociales
 const GithubIcon = () => (

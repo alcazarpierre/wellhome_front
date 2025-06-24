@@ -51,7 +51,6 @@ const AboutUsSection = () => {
           </div>
         </div>
 
-        {/* --- SECCIÓN DE COMPROMISOS MODIFICADA --- */}
         <div className="text-center mt-16">
           <h3 className="text-2xl md:text-3xl font-bold mb-8 text-content-text-light dark:text-content-text-dark">Nuestro Compromiso es Contigo:</h3>
           

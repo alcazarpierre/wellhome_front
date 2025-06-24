@@ -8,18 +8,14 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => { 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // ... (otros hooks y funciones sin cambios) ...
   const { darkMode, toggleDarkMode } = useTheme();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  useEffect(() => { /* ... (código de useEffect sin cambios) ... */ }, []);
-  useEffect(() => { /* ... (código de useEffect sin cambios) ... */ }, [isMenuOpen, isMobile]);
+  useEffect(() => { }, []);
+  useEffect(() => { }, [isMenuOpen, isMobile]);
 
-
-  // --- ESTRUCTURA DE DATOS SIMPLIFICADA ---
-  // Ahora todos usan 'to' para el componente <Link>
   const mainNavLinks = [
     { label: 'Inicio', to: '/#inicio' },
     { label: 'Nosotros', to: '/#nosotros' },
@@ -39,7 +35,6 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
   const mobileMenuItems = [...mainNavLinks, ...mobileOnlyLinks, ...actionButtons];
   const desktopMenuItems = [...mainNavLinks, ...actionButtons];
 
-  // --- FUNCIÓN DE RENDERIZADO SIMPLIFICADA ---
   const renderMenuItem = (item) => {
     if (item.isAction) {
       return (
@@ -51,7 +46,7 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
         </button>
       );
     }
-    // Todos los demás son <Link>
+
     return (
       <Link
         to={item.to}
@@ -66,8 +61,6 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-navbar-bg-light dark:bg-navbar-bg-dark shadow-md z-50">
-        {/* ... (resto del JSX de la Navbar sin cambios, ya que usa la nueva lógica de renderizado) ... */}
-        {/* El código de renderizado para desktop y mobile usará la función renderMenuItem actualizada */}
         <div className="container mx-auto px-4 py-3 flex justify-between items-center max-w-screen-xl">
             <Link to="/" className="flex items-center p-2 rounded">
                 <img src={isMobile ? shortLogo : fullLogo} alt="Logo" className="h-10 w-auto max-w-none" />
