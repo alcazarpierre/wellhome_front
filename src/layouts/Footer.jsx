@@ -44,7 +44,7 @@ const Footer = () => {
               <img
                 src={shortLogo}
                 alt="Logo"
-                className="h-12 w-auto"
+                className="h-12 mb-4 w-auto"
               />
             </Link>
             <div className="space-y-2 text-sm">

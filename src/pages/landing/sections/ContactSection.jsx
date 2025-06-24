@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema } from '../../../utils/validationSchemas';
 import { countries } from '../../../data/countries';
+import emailjs from '@emailjs/browser'; 
+import { toast } from 'react-hot-toast';
 
 const ContactSection = () => {
   const { 
@@ -12,7 +14,8 @@ const ContactSection = () => {
     handleSubmit, 
     formState: { errors, isSubmitting },
     watch,
-    setValue
+    setValue,
+    reset
   } = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -32,9 +35,40 @@ const ContactSection = () => {
   }, [selectedCountryName, setValue]);
 
   const onSubmit = async (data) => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(data);
-    alert('Formulario enviado con éxito (simulación)');
+    const templateParams = {
+      nombres: data.nombres,
+      apellidos: data.apellidos,
+      email: data.email,
+      pais: data.pais,
+      ciudad: data.ciudad,
+      celular: data.celular,
+      asunto: data.asunto,
+      mensaje: data.mensaje,
+    };
+
+    toast.promise(
+      emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      ),
+      {
+        loading: 'Enviando mensaje...',
+        success: () => {
+          reset(); // Limpia el formulario en caso de éxito
+          return '¡Mensaje enviado con éxito! Te contactaremos pronto.';
+        },
+        error: (err) => {
+          console.error('FAILED...', err);
+          return 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.';
+        },
+      }
+    );
+
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+    // console.log(data);
+    // alert('Formulario enviado con éxito (simulación)');
   };
 
   // --- COMPONENTE FormField MODIFICADO ---
