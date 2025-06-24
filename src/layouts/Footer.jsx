@@ -50,7 +50,7 @@ const Footer = () => {
             <div className="space-y-2 text-sm">
                 <a href="mailto:contacto@wellhome.app" className="flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
                     <EmailIcon className="w-5 h-5"/>
-                    <span>contacto@wellhome.app</span>
+                    <span>castrumperu@gmail.com</span>
                 </a>
                 <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
                     <WhatsappIcon className="w-5 h-5"/>
