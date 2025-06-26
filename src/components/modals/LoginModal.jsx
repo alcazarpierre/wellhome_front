@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import LoginForm from '../auth/LoginForm';
 import fullLogo from '../../assets/logos/fullLogo.svg';
 import { XMarkIcon } from '@heroicons/react/24/outline'; 
@@ -12,7 +13,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleLoginSuccess = () => {
-    alert('Inicio de sesión exitoso (simulación)');
+    toast.success('¡Bienvenido de vuelta!');
     onClose(); // Cierra el modal
     navigate('/dashboard'); // Redirige al dashboard
   };
