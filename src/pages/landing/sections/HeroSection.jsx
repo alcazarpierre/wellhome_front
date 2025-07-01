@@ -44,7 +44,7 @@ const features = [
   },
 ];
 
-const HeroSection = () => {
+const HeroSection = ({onOpenPreRegModal}) => {
   const carouselRef = useRef(null);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 640); 
 
@@ -100,7 +100,7 @@ const HeroSection = () => {
         {/* Botón CTA */}
         <button
           className="px-8 py-3 md:px-10 md:py-4 bg-brand-accent text-white text-lg md:text-xl font-bold rounded-full shadow-lg hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300"
-          onClick={() => { /* Lógica para abrir el modal de registro o redirigir */ }}
+          onClick={onOpenPreRegModal}
         >
           Regístrate Gratis
         </button>

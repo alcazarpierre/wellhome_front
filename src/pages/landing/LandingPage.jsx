@@ -8,11 +8,13 @@ import FAQSection from './sections/FAQSection';
 import ContactSection from './sections/ContactSection';
 import RegisterModal from '../../components/modals/RegisterModal';
 import LoginModal from '../../components/modals/LoginModal';
+import PreRegistrationModal from '../../components/modals/PreRegistrationModal';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const LandingPage = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] =  useState(false);
+  const [isPreRegModalOpen, setIsPreRegModalOpen] = useState(false);
   const { darkMode } = useTheme();
 
   const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
@@ -29,7 +31,7 @@ const LandingPage = () => {
       />
       
       <main className="flex-grow">
-        <HeroSection />
+        <HeroSection onOpenPreRegModal = {() => setIsPreRegModalOpen(true)}/>
         <AboutUsSection />
         <FAQSection /> 
         <ContactSection />
@@ -37,6 +39,7 @@ const LandingPage = () => {
 
       <Footer />
 
+      <PreRegistrationModal isOpen={isPreRegModalOpen} onClose={() => setIsPreRegModalOpen(false)}/>
       <RegisterModal isOpen={isRegisterModalOpen} onClose={handleCloseRegisterModal} />
       <LoginModal isOpen={isLoginModalOpen} onClose={handleCloseLoginModal}/>
     </div>

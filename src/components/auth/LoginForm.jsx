@@ -1,32 +1,41 @@
 // src/components/auth/LoginForm.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '../../utils/validationSchemas';
 import { Link } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
-// El componente ahora recibe una prop 'onSuccess' para notificar cuando el login es exitoso
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../features/auth/authSlice';
+
 const LoginForm = ({ onSuccess }) => {
   const [showPassword, setShowPassword] = useState(false);
+  
+  const dispatch = useDispatch();
+  const { status: authStatus, error: authError } = useSelector((state) => state.auth);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
 
+  useEffect(() => {
+    if (authStatus === 'failed' && authError) {
+      alert(`Error: ${authError}`);
+    }
+  }, [authStatus, authError]);
+  
   const onSubmit = async (data) => {
-    console.log("Datos del formulario:", data);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // En una app real, aquí iría la llamada al backend.
-    // Si la llamada es exitosa, notificamos al componente padre.
-    if (onSuccess) {
-      onSuccess(); // Esto podría cerrar el modal y redirigir.
+    const resultAction = await dispatch(loginUser({ login: data.email, password: data.password, rememberMe: data.rememberMe }));
+    if (loginUser.fulfilled.match(resultAction)) {
+      if (onSuccess) {
+        onSuccess();
+      }
     }
   };
 
@@ -88,10 +97,10 @@ const LoginForm = ({ onSuccess }) => {
       <div>
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={authStatus === 'loading'}
           className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-lg font-medium text-white bg-brand-primary hover:bg-brand-accent disabled:bg-gray-400"
         >
-          {isSubmitting ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+          {authStatus === 'loading' ? 'Iniciando sesión...' : 'Iniciar Sesión'}
         </button>
       </div>
     </form>
