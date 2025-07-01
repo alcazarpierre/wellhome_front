@@ -31,7 +31,7 @@ const LoginForm = ({ onSuccess }) => {
   }, [authStatus, authError]);
   
   const onSubmit = async (data) => {
-    const resultAction = await dispatch(loginUser({ login: data.email, password: data.password }));
+    const resultAction = await dispatch(loginUser({ login: data.email, password: data.password, rememberMe: data.rememberMe }));
     if (loginUser.fulfilled.match(resultAction)) {
       if (onSuccess) {
         onSuccess();

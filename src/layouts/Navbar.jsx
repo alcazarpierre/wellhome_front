@@ -67,8 +67,8 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
             </Link>
             <div className="flex items-center gap-4">
                 <button type="button" onClick={toggleDarkMode} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                    <SunIcon className="h-5 w-5 text-yellow-500 dark:hidden" />
-                    <MoonIcon className="h-5 w-5 text-content-text-light dark:text-content-text-dark hidden dark:inline" />
+                    <MoonIcon className="h-5 w-5 text-content-text-light dark:hidden" />
+                    <SunIcon className="h-5 w-5 text-content-text-light dark:text-yellow-500 hidden dark:inline" />
                 </button>
                 <div className="hidden md:flex gap-4 items-center"> 
                     {desktopMenuItems.map((item) => <React.Fragment key={item.label}>{renderMenuItem(item)}</React.Fragment>)}
