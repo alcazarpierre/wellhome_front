@@ -4,11 +4,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import shortLogo from '../assets/logos/shortLogo.svg';
 
+const Footer = ({ onOpenLoginModal }) => {
+  const currentYear = new Date().getFullYear();
+
 const navLinks = [
-  { name: 'Nosotros', href: '#nosotros' },
-  { name: 'Preguntas Frecuentes', href: '#faq' },
-  { name: 'Contacto', href: '#contacto' },
-  { name: 'Equipo de Desarrollo', href: '/equipo-desarrollo' }, // Enlace añadido
+  { name: 'Nosotros', href: '/#nosotros' },
+  { name: 'Preguntas Frecuentes', href: '/#faq' },
+  { name: 'Contacto', href: '/#contacto' },
+  { name: 'Equipo de Desarrollo', href: '/equipo-desarrollo' }, 
 ];
 
 // --- ÍCONOS AÑADIDOS ---
@@ -26,9 +29,6 @@ const socialLinks = [
     { name: 'Facebook', href: '#', icon: <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z" /></svg> },
     { name: 'LinkedIn', href: '#', icon: <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.98v16h4.98v-8.396c0-2.002.892-3.398 2.825-3.398 1.834 0 2.175 1.258 2.175 3.398v8.396h4.98v-10.396c0-3.652-2.225-6.604-5.485-6.604-2.502 0-4.125 1.4-4.98 2.5v-2z" /></svg> }
   ];
-
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-900 text-gray-400">
@@ -61,6 +61,12 @@ const Footer = () => {
                   {link.name}
                 </a>
               ))}
+              <button 
+                onClick={onOpenLoginModal}
+                className="text-base font-semibold md:text-left text-brand-accent hover:text-white transition-colors duration-300 mt-2"
+              >
+                Ingresar a la app
+              </button>
             </nav>
           </div>
           <div className="w-full md:w-auto">

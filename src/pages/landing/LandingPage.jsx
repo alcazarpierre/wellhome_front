@@ -37,7 +37,7 @@ const LandingPage = () => {
         <ContactSection />
       </main>
 
-      <Footer />
+      <Footer onOpenLoginModal={() => setIsLoginModalOpen(true)}/>
 
       <PreRegistrationModal isOpen={isPreRegModalOpen} onClose={() => setIsPreRegModalOpen(false)}/>
       <RegisterModal isOpen={isRegisterModalOpen} onClose={handleCloseRegisterModal} />
