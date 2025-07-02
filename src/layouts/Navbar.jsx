@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
-import fullLogo from '../assets/logos/fullLogo.svg';
+// import fullLogo from '../assets/logos/fullLogo.svg';
 import shortLogo from '../assets/logos/shortLogo.svg';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -24,7 +24,10 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
 
   const mobileOnlyLinks = [
     { label: 'Contacto', to: '/#contacto' },
-    { label: 'Dev Team', to: '/equipo-desarrollo' },
+  ];
+
+  const desktopOnlyLinks = [
+    { label: 'DevTeam', to: '/equipo-desarrollo', responsiveClass: 'hidden lg:flex' },
   ];
 
   const actionButtons = [
@@ -32,10 +35,11 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
     { label: 'Ingresar', action: onOpenLoginModal, isAction: true, type: 'filled-button' },
   ];
 
-  const mobileMenuItems = [...mainNavLinks, ...mobileOnlyLinks, ...actionButtons];
-  const desktopMenuItems = [...mainNavLinks, ...actionButtons];
+  const mobileMenuItems = [...mainNavLinks, ...mobileOnlyLinks, ...desktopOnlyLinks.map(l => ({...l, responsiveClass: ''})), ...actionButtons];
+  const desktopMenuItems = [...mainNavLinks,  ...desktopOnlyLinks, ...actionButtons];
 
   const renderMenuItem = (item) => {
+    const itemBaseClass = item.responsiveClass || '';
     if (item.isAction) {
       return (
         <button
@@ -63,7 +67,8 @@ const Navbar = ({ onOpenRegisterModal, onOpenLoginModal }) => {
     <nav className="fixed top-0 left-0 w-full bg-navbar-bg-light dark:bg-navbar-bg-dark shadow-md z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center max-w-screen-xl">
             <Link to="/" className="flex items-center p-2 rounded">
-                <img src={isMobile ? shortLogo : fullLogo} alt="Logo" className="h-10 w-auto max-w-none" />
+                <img src={shortLogo} alt="Logo" className="h-10 w-auto max-w-none" />
+                {/* <img src={isMobile ? shortLogo : fullLogo} alt="Logo" className="h-10 w-auto max-w-none" /> */}
             </Link>
             <div className="flex items-center gap-4">
                 <button type="button" onClick={toggleDarkMode} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">

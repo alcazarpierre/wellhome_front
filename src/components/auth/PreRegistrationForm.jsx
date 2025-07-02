@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { preRegistrationSchema } from '../../utils/validationSchemas';
 import { toast } from 'react-hot-toast';
+import apiClient from '../../services/api'; 
 
 const PreRegistrationForm = ({ onSuccess }) => {
   const { 
@@ -16,29 +17,26 @@ const PreRegistrationForm = ({ onSuccess }) => {
     resolver: zodResolver(preRegistrationSchema),
   });
 
-  // --- Constantes de Estilo para Consistencia ---
   const labelStyle = "block text-sm font-medium text-gray-700 dark:text-gray-300";
   const inputStyle = "mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary transition-colors";
   const errorStyle = "mt-2 text-sm text-red-600";
   const primaryButtonStyle = "w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-brand-primary hover:bg-brand-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary disabled:bg-gray-400 disabled:cursor-not-allowed transition-all";
 
-  const onSubmit = async (data) => {
-    console.log("Datos de Pre-registro:", data);
-    
-    // Aquí iría la llamada a tu backend para guardar el prospecto
-    // POST /api/prospects
-    // Simulamos el éxito para la demostración
-    const promise = new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast.promise(promise, {
-      loading: 'Enviando solicitud...',
-      success: () => {
-        reset(); // Limpia el formulario
-        if (onSuccess) onSuccess(); // Cierra el modal
-        return "¡Gracias por tu interés! Te contactaremos pronto.";
-      },
-      error: 'Hubo un error al enviar la solicitud.'
-    });
+  const onSubmit = (data) => {
+    toast.promise(
+      apiClient.post('/demorequests', data),
+      {
+        loading: 'Enviando solicitud...',
+        success: () => {
+          reset(); 
+          if (onSuccess) onSuccess(); 
+          return '¡Solicitud recibida! Te contactaremos pronto.';
+        },
+        error: (err) => {
+          return err.response?.data?.message || 'No se pudo enviar la solicitud.';
+        }
+      }
+    );
   };
 
   return (
@@ -46,23 +44,23 @@ const PreRegistrationForm = ({ onSuccess }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
         {/* Nombres */}
         <div>
-          <label htmlFor="nombres" className={labelStyle}>Nombres</label>
-          <input id="nombres" {...register('nombres')} className={inputStyle} placeholder="Ej: Ana" />
-          {errors.nombres && <p className={errorStyle}>{errors.nombres.message}</p>}
+          <label htmlFor="firstName" className={labelStyle}>Nombres</label>
+          <input id="firstName" {...register('firstName')} className={inputStyle} placeholder="Ej: Ana" />
+          {errors.firstName && <p className={errorStyle}>{errors.firstName.message}</p>}
         </div>
 
         {/* Apellidos */}
         <div>
-          <label htmlFor="apellidos" className={labelStyle}>Apellidos</label>
-          <input id="apellidos" {...register('apellidos')} className={inputStyle} placeholder="Ej: Torres" />
-          {errors.apellidos && <p className={errorStyle}>{errors.apellidos.message}</p>}
+          <label htmlFor="lastName" className={labelStyle}>Apellidos</label>
+          <input id="lastName" {...register('lastName')} className={inputStyle} placeholder="Ej: Torres" />
+          {errors.lastName && <p className={errorStyle}>{errors.lastName.message}</p>}
         </div>
 
         {/* Nombre del Condominio */}
         <div className="md:col-span-2">
-          <label htmlFor="nombreCondominio" className={labelStyle}>Nombre del Condominio / Edificio</label>
-          <input id="nombreCondominio" {...register('nombreCondominio')} className={inputStyle} placeholder="Ej: Residencial El Sol" />
-          {errors.nombreCondominio && <p className={errorStyle}>{errors.nombreCondominio.message}</p>}
+          <label htmlFor="condominiumName" className={labelStyle}>Nombre del Condominio / Edificio</label>
+          <input id="condominiumName" {...register('condominiumName')} className={inputStyle} placeholder="Ej: Residencial El Sol" />
+          {errors.condominiumName && <p className={errorStyle}>{errors.condominiumName.message}</p>}
         </div>
         
         {/* Correo Electrónico */}
@@ -74,37 +72,37 @@ const PreRegistrationForm = ({ onSuccess }) => {
 
         {/* Celular */}
         <div>
-          <label htmlFor="celular" className={labelStyle}>Celular</label>
-          <input id="celular" type="tel" {...register('celular')} className={inputStyle} placeholder="Ej: 987654321"/>
-          {errors.celular && <p className={errorStyle}>{errors.celular.message}</p>}
+          <label htmlFor="phone" className={labelStyle}>Celular</label>
+          <input id="phone" type="tel" {...register('phone')} className={inputStyle} placeholder="Ej: 987654321"/>
+          {errors.phone && <p className={errorStyle}>{errors.phone.message}</p>}
         </div>
 
         {/* País */}
         <div>
-          <label htmlFor="pais" className={labelStyle}>País</label>
-          <input id="pais" {...register('pais')} className={inputStyle} placeholder="Ej: Perú"/>
-          {errors.pais && <p className={errorStyle}>{errors.pais.message}</p>}
+          <label htmlFor="country" className={labelStyle}>País</label>
+          <input id="country" {...register('country')} className={inputStyle} placeholder="Ej: Perú"/>
+          {errors.country && <p className={errorStyle}>{errors.country.message}</p>}
         </div>
 
         {/* Estado / Provincia */}
         <div>
-          <label htmlFor="estado" className={labelStyle}>Estado / Región</label>
-          <input id="estado" {...register('estado')} className={inputStyle} placeholder="Ej: Arequipa"/>
-          {errors.estado && <p className={errorStyle}>{errors.estado.message}</p>}
+          <label htmlFor="state" className={labelStyle}>Estado / Provincia</label>
+          <input id="state" {...register('state')} className={inputStyle} placeholder="Ej: Arequipa"/>
+          {errors.state && <p className={errorStyle}>{errors.state.message}</p>}
         </div>
 
         {/* Ciudad */}
         <div>
-          <label htmlFor="ciudad" className={labelStyle}>Ciudad / Provincia</label>
-          <input id="ciudad" {...register('ciudad')} className={inputStyle} placeholder="Ej: Arequipa"/>
-          {errors.ciudad && <p className={errorStyle}>{errors.ciudad.message}</p>}
+          <label htmlFor="city" className={labelStyle}>Ciudad</label>
+          <input id="city" {...register('city')} className={inputStyle} placeholder="Ej: Arequipa"/>
+          {errors.city && <p className={errorStyle}>{errors.city.message}</p>}
         </div>
 
         {/* Distrito */}
         <div>
-          <label htmlFor="distrito" className={labelStyle}>Distrito</label>
-          <input id="distrito" {...register('distrito')} className={inputStyle} placeholder="Ej: Paucarpata"/>
-          {errors.distrito && <p className={errorStyle}>{errors.distrito.message}</p>}
+          <label htmlFor="district" className={labelStyle}>Distrito</label>
+          <input id="district" {...register('district')} className={inputStyle} placeholder="Ej: Paucarpata"/>
+          {errors.district && <p className={errorStyle}>{errors.district.message}</p>}
         </div>
       </div>
 

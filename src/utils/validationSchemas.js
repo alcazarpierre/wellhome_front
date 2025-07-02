@@ -29,15 +29,15 @@ export const loginSchema = z.object({
 });
 
 export const preRegistrationSchema = z.object({
-  nombres: z.string().min(2, { message: "El nombre es requerido." }),
-  apellidos: z.string().min(2, { message: "El apellido es requerido." }),
+  firstName: z.string().min(2, { message: "El nombre es requerido." }),
+  lastName: z.string().min(2, { message: "El apellido es requerido." }),
+  condominiumName: z.string().min(3, { message: "El nombre del condominio es requerido." }),
   email: z.string().email({ message: "Por favor, introduce un correo válido." }),
-  pais: z.string().min(1, { message: "Debes seleccionar un país." }),
-  estado: z.string().min(2, { message: "El estado/provincia es requerido." }),
-  ciudad: z.string().min(2, { message: "La ciudad es requerida." }),
-  distrito: z.string().min(2, { message: "El distrito es requerido." }),
-  celular: z.string().min(9, { message: "El número de celular no es válido." }),
-  nombreCondominio: z.string().min(3, { message: "El nombre del condominio es requerido." }),
+  phone: z.string().min(9, { message: "El número de celular no es válido." }),
+  country: z.string().min(2, { message: "El país es requerido." }),
+  state: z.string().min(2, { message: "El estado/provincia es requerido." }),
+  city: z.string().min(2, { message: "La ciudad es requerida." }),
+  district: z.string().min(2, { message: "El distrito es requerido." }),
   aceptaTerminos: z.boolean().refine(data => data === true, {
     message: "Debes aceptar los términos para registrarte.",
   }),
